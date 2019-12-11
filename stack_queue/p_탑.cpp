@@ -1,40 +1,40 @@
 ﻿#include <string>
-#include <vector>
 #include <queue>
 #include <iostream>
 #include <algorithm>
 
 using namespace std;
 
-vector<int> solution(vector<int> heights) {
- 	vector<int> answer;
+void card_rule(queue <int> *q)
+{
+	while (!q.empty) {
+		q->pop();
+		if (q->size() == 1){
+			cout<<q.front();
+			return;
+		}
+		q->push(p.front())
+			q->pop();
+	}
+}
+
+int solution(int n) {
+	int answer = 0;
 	queue <int> q;
 
-	int end = heights.size() - 1;
-	q.push(heights[end]);
-
-	for (int i = end-1; i >= 0; i--) {
-		if (heights[i] > q.back()) {
-			while (!q.empty()) {
-                if(heights[i] >q.front())
-                    answer.push_back(i + 1);
-                else
-                    answer.push_back(0);
-                q.pop();
-            }
-			q.push(heights[i]);
-		}
-		else
-			q.push(heights[i]);
+	for (int i = 0; i < n; i++) {
+		q.push(i + 1);
 	}
-
-	if (!q.empty()) {
-		while (!q.empty()) {
-			answer.push_back(0);
-            q.pop();
-		}
+	while(!q.empty()){
+		cout<<q.front()<<" ";
+		q.pop();
 	}
-    
-    reverse(answer.begin(),answer.end());
-    return answer;
+	//answer = card_rule(q);
+
+	return answer;
+}
+
+int main(void) {
+	cout<<solution(6);
+	return 0;
 }
